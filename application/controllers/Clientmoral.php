@@ -2,7 +2,7 @@
 Class Clientmoral extends CI_Controller
 { 
 
-    public function index()
+    public function list()
     {
         $this->load->model('Clientmoralrepo');
         $clientmorals = $this->Clientmoralrepo->all();
@@ -31,12 +31,40 @@ Class Clientmoral extends CI_Controller
             $formArray['telephone'] = $this->input->post('telephone');
             $this->Clientmoralrepo->create($formArray);
             //$this->session->set_flashdate('succes','Informations bien enregistrées!');
-            redirect(base_url().'index.php/Clientmoral/index');
+            redirect(base_url().'index.php/Clientmoral/list');
             
         }
         
     }
 
-    
-    
-} 
+
+    function edit($clientmoralId )
+    {
+        $this->load->model('clientmoralrepo');
+       $clientmoral = $this->clientmoralrepo->getClientmoral($clientmoralId);
+        
+        $data = array();
+        $data['clientmoral'] = $clientmoral;
+
+        $this->forl_validation->set_rules('raisonsocial','Raisonsocial','required');
+        $this->form_validation->set_rules('adresse','Adresse','required');
+        $this->form_validation->set_rules('telephone','Telephone','required');
+        
+        if ($this->form_validation->run() == false) {
+
+            $this->load->view('edit',$data);
+        } else{
+
+            //modification enregistrée
+            $formArray = array();
+            $formArray['raisonsocial'] = $this->input->post('raisonsocial');
+            $formArray['adresse'] = $this->input->post('adresse');
+            $formArray['telephone'] = $this->input->post('telephone');
+            
+            $this->clientmoralrepo->updateClientmoral($clientmoralId,$formArray);
+            redirect([base_url().'index.php/Clientmoral/list']);
+        }
+        
+    }
+
+    }
