@@ -13,13 +13,13 @@ class Clientmoralrepo extends CI_Model
 
     function getClientmoral($clientmoralId){
 
-        $this->db->where('clientmoral_id',$clientmoralId);
+        $this->db->where('id',$clientmoralId);
         return $clientmoral = $this->db->get('clientmorals')->row_array(); // SELECT* FROM clientmorals where clientmoral_id = ?
     }
 
     function updateClientmoral($clientmoralId,$formArray)
     {
-        $this->db->where('clientmoral_id',$clientmoralId);
+        $this->db->where('id',$clientmoralId);
         $this->db->update('clientmorals',$formArray); // update clientmorals SET name = ? where clientmoral_id = ?
     }
 }

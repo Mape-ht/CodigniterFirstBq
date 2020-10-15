@@ -4,8 +4,8 @@ Class Clientmoral extends CI_Controller
 
     public function list()
     {
-        $this->load->model('Clientmoralrepo');
-        $clientmorals = $this->Clientmoralrepo->all();
+        $this->load->model('clientmoralrepo');
+        $clientmorals = $this->clientmoralrepo->all();
 
         $data = array();
         $data['clientmorals'] = $clientmorals;
@@ -15,7 +15,7 @@ Class Clientmoral extends CI_Controller
     public function create()
     {
         //echo "ça marche !";
-        $this->load->model('Clientmoralrepo');
+        $this->load->model('clientmoralrepo');
         $this->form_validation->set_rules('raisonsocial','Raisonsocial','required');
         $this->form_validation->set_rules('adresse','Adresse','required');
         $this->form_validation->set_rules('telephone','Telephone','required');
@@ -29,7 +29,7 @@ Class Clientmoral extends CI_Controller
             $formArray['raisonsocial'] = $this->input->post('raisonsocial');
             $formArray['adresse'] = $this->input->post('adresse');
             $formArray['telephone'] = $this->input->post('telephone');
-            $this->Clientmoralrepo->create($formArray);
+            $this->clientmoralrepo->create($formArray);
             //$this->session->set_flashdate('succes','Informations bien enregistrées!');
             redirect(base_url().'index.php/Clientmoral/list');
             
@@ -38,7 +38,7 @@ Class Clientmoral extends CI_Controller
     }
 
 
-    function edit($clientmoralId )
+    function edit($clientmoralId)
     {
         $this->load->model('clientmoralrepo');
        $clientmoral = $this->clientmoralrepo->getClientmoral($clientmoralId);
@@ -46,13 +46,13 @@ Class Clientmoral extends CI_Controller
         $data = array();
         $data['clientmoral'] = $clientmoral;
 
-        $this->forl_validation->set_rules('raisonsocial','Raisonsocial','required');
+        $this->form_validation->set_rules('raisonsocial','Raisonsocial','required');
         $this->form_validation->set_rules('adresse','Adresse','required');
         $this->form_validation->set_rules('telephone','Telephone','required');
         
         if ($this->form_validation->run() == false) {
 
-            $this->load->view('edit',$data);
+            $this->load->view('editclientmoral',$data);
         } else{
 
             //modification enregistrée

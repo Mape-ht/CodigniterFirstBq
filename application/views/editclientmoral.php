@@ -9,31 +9,31 @@
 <body>
 <div class="navbar navbar-dark bg-dark">
     <div class="container">
-        <a href="#" class="navbar-brand">Client Entreprise</a>
-        <a href="#" class="navbar-brand">Client Particulier</a>
-        <a href="#" class="navbar-brand">Compte</a>
+    <a href="<?php echo base_url().'index.php/Clientmoral/create'?>" class="navbar-brand">Client Entreprise</a>
+        <a href="<?php echo base_url().'index.php/Clientphysique/create'?>" class="navbar-brand">Client Particulier</a>
+        <a href="<?php echo base_url().'index.php/Compte/create'?>" class="navbar-brand">Compte</a>
     </div>
 </div>   
 <div class="container" style="padding-top:10px;">
     <h3>Update Client Entreprise</h3>
     <hr>
-    <form method="post" name="creerClientmoral" action="<?php echo base_url().'index.php/Clientmoral/edit/'.$clientmoral['clientmoral_id'];?>">
+    <form method="post" name="creerClientmoral" action="<?php echo base_url().'index.php/Clientmoral/edit/'.$clientmoral['id'];?>">
     <div class="row">
         
         <div class="col-md-6">
             <div class="form-group">
                 <label for="raisonsocial">Raison Social</label>
-                <input type="text" name="raisonsocial" value="<?php echo set_value('raisonsocial'.$clienmoral['raisonsocial];?>" class="form-control">
+                <input type="text" name="raisonsocial" value="<?php echo set_value('raisonsocial'.$clientmoral['raisonsocial']);?>" class="form-control">
                 <?php //echo form_error('raisonsocial');?>
             </div>
             <div class="form-group">
                 <label for="adresse">Adresse</label>
-                <input type="text" name="adresse" value="<?php echo set_value('adresse'.$clienmoral['adresse];?>" class="form-control">
-                <?php //echo form_error('adresse');?>
+                <input type="text" name="adresse" value="<?php echo set_value('adresse'.$clientmoral['adresse']);?>" class="form-control">
+                <?php echo form_error('adresse');?>
             </div>
             <div class="form-group">
                 <label for="telephone">Telephone</label>
-                <input type="text" name="telephone" value="<?php echo set_value('telephone'.$clienmoral['telephone];?>" class="form-control">
+                <input type="text" name="telephone" value="<?php echo set_value('telephone'.$clientmoral['telephone']);?>" class="form-control">
                 <?php echo form_error('telephone');?>
             </div>
             <div class="form-group">

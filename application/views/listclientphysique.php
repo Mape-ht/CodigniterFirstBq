@@ -16,9 +16,9 @@
     </div>   
     <div class="container" style="padding-top:10px;">
         <div class="row">
-            <div class="col-6"><h3>Liste Client Entreprise</h3></div>
+            <div class="col-6"><h3>Liste Client Particulier</h3></div>
                 <div class="col-6 text-right">
-                    <a href="<?php echo base_url().'index.php/Clientmoral/create'; ?>" class="btn btn-primary">Créer</a>
+                    <a href="<?php echo base_url().'index.php/Clientphysique/create'; ?>" class="btn btn-primary">Créer</a>
                 </div>
             </div>
         </div>        
@@ -30,24 +30,30 @@
                 <table class="table table-striped">
                     <tr>
                         <th>ID</th>
-                        <th>Raison Social</th>
+                        <th>Nom</th>
+                        <th>Prenom</th>
                         <th>Adresse</th>
                         <th>Téléphone</th>
+                        <th>Statut</th>
+                        <th>Salaire</th>
                         <th width='70'>Editer</th>
                         <th width='70'>Supprimer</th>
                     </tr>
 
-                        <?php if(!empty($clientmorals)) { foreach($clientmorals as $clientmoral){ ?>
+                        <?php if(!empty($clientphysiques)) { foreach($clientphysiques as $clientphysique){ ?>
                     <tr>
-                        <td><?php echo $clientmoral['id']?></td>
-                        <td><?php echo $clientmoral['raisonsocial']?></td>
-                        <td><?php echo $clientmoral['adresse']?></td>
-                        <td><?php echo $clientmoral['telephone']?></td>
+                        <td><?php echo $clientphysique['id']?></td>
+                        <td><?php echo $clientphysique['nom']?></td>
+                        <td><?php echo $clientphysique['prenom']?></td>
+                        <td><?php echo $clientphysique['adresse']?></td>
+                        <td><?php echo $clientphysique['telephone']?></td>
+                        <td><?php echo $clientphysique['statut']?></td>
+                        <td><?php echo $clientphysique['salaire']?></td>
                         <td>
-                            <a href="<?php echo base_url().'index.php/Clientmoral/edit/'.$clientmoral['id']?>" class="btn btn-primary">Editer</a>
+                            <a href="<?php echo base_url().'index.php/Clientphysique/edit/'.$clientphysique['id']?>" class="btn btn-primary">Editer</a>
                         </td>
                         <td>
-                            <a href="<?php echo base_url().'index.php/Clientmoral/delete/'.$clientmoral['id']?>" class="btn btn-danger">Supprimer</a>
+                            <a href="<?php echo base_url().'index.php/Clientphysique/delete/'.$clientphysique['id']?>" class="btn btn-danger">Supprimer</a>
                         </td>
                     </tr>
                         <?php } } else { ?>
