@@ -20,7 +20,7 @@ class Clientmoralrepo extends CI_Model
     function updateClientmoral($clientmoralId,$formArray)
     {
         $this->db->where('id',$clientmoralId);
-        $this->db->update('clientmorals',$formArray); // update clientmorals SET name = ? where clientmoral_id = ?
+        $this->db->update('clientmorals',$formArray); // update clientmorals SET raisonsocial = ? where clientmoral_id = ?
     }
 }
 

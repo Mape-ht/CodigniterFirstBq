@@ -14,6 +14,7 @@ class Compte extends CI_Controller
     public function create()
     {
         //echo "ca marche!";
+        
         $this->load->model('compterepo');
         $this->form_validation->set_rules('numero','Numero','required');
         $this->form_validation->set_rules('clerib','Clerib','required');
@@ -29,6 +30,7 @@ class Compte extends CI_Controller
 
             //save compte to database
             $formArray = array();
+            
             $formArray['numero'] = $this->input->post('numero');
             $formArray['clerib'] = $this->input->post('clerib');
             $formArray['solde'] = $this->input->post('solde');
@@ -48,6 +50,8 @@ class Compte extends CI_Controller
 
             $data= array();
             $data['compte'] =$compte;
+            var_dump($data);
+            die;
             
             $this->form_validation->set_rules('numero','Numero','required');
             $this->form_validation->set_rules('clerib','Clerib','required');
